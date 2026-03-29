@@ -9,8 +9,9 @@ type FormData = {
   employeeName: string;
   jobTitle: string;
   reviewPeriod: string;
-  highlights: string;
-  growth: string;
+  results: string;
+  superpowers: string;
+  opportunities: string;
   tone: string;
 };
 
@@ -28,8 +29,9 @@ function ReviewGeneratorForm() {
     employeeName: "",
     jobTitle: "",
     reviewPeriod: "Annual",
-    highlights: "",
-    growth: "",
+    results: "",
+    superpowers: "",
+    opportunities: "",
     tone: "Professional",
   });
 
@@ -68,8 +70,8 @@ function ReviewGeneratorForm() {
       setError("Employee name and job title are required.");
       return;
     }
-    if (!form.highlights.trim()) {
-      setError("Please add at least one performance highlight.");
+    if (!form.results.trim()) {
+      setError("Please fill in their top results for the review period.");
       return;
     }
 
@@ -215,14 +217,14 @@ function ReviewGeneratorForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              What did they do well? <span className="text-red-500">*</span>
-              <span className="font-normal text-gray-400 ml-1">List 3–5 bullet points</span>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Top 3 results for this review period <span className="text-red-500">*</span>
             </label>
+            <p className="text-xs text-gray-400 mb-1.5">Be specific about what they delivered and the value it drove.</p>
             <textarea
-              value={form.highlights}
-              onChange={(e) => setForm({ ...form, highlights: e.target.value })}
-              placeholder={"• Hit quarterly sales targets consistently\n• Led the CRM migration project\n• Mentored two junior team members"}
+              value={form.results}
+              onChange={(e) => setForm({ ...form, results: e.target.value })}
+              placeholder={"1. Closed $1.2M in new ARR, exceeding quota by 22% — largest Q4 in team history\n2. Led the enterprise pilot with Acme Corp, resulting in a $400K expansion\n3. Rebuilt the outbound sequence, increasing reply rates from 4% to 11%"}
               rows={5}
               className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 resize-none"
               disabled={loading}
@@ -230,15 +232,30 @@ function ReviewGeneratorForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              What should they improve?
-              <span className="font-normal text-gray-400 ml-1">1–2 points</span>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Top 3 superpowers
             </label>
+            <p className="text-xs text-gray-400 mb-1.5">What are their strengths, and how did they use them to drive results?</p>
             <textarea
-              value={form.growth}
-              onChange={(e) => setForm({ ...form, growth: e.target.value })}
-              placeholder={"• Could improve cross-functional communication\n• Delegate more to junior team members"}
-              rows={3}
+              value={form.superpowers}
+              onChange={(e) => setForm({ ...form, superpowers: e.target.value })}
+              placeholder={"1. Relationship building — her clients consistently renew and expand because they trust her\n2. Persistence — follows up with precision without being pushy\n3. Coachability — implements feedback immediately and visibly"}
+              rows={5}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 resize-none"
+              disabled={loading}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Top 3 opportunities to improve
+            </label>
+            <p className="text-xs text-gray-400 mb-1.5">Where do they have room to grow?</p>
+            <textarea
+              value={form.opportunities}
+              onChange={(e) => setForm({ ...form, opportunities: e.target.value })}
+              placeholder={"1. Strategic account planning — tends to be reactive rather than proactive with key accounts\n2. Cross-functional communication — could loop in CS earlier in the sales process\n3. Delegation — still doing work that could be handed to junior reps"}
+              rows={5}
               className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 resize-none"
               disabled={loading}
             />

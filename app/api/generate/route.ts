@@ -17,11 +17,11 @@ Never use corporate jargon like "synergize", "leverage", or "utilize". Write lik
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { employeeName, jobTitle, reviewPeriod, highlights, growth, tone } = body;
+    const { employeeName, jobTitle, reviewPeriod, results, superpowers, opportunities, tone } = body;
 
-    if (!employeeName || !jobTitle || !highlights) {
+    if (!employeeName || !jobTitle || !results) {
       return NextResponse.json(
-        { error: "Missing required fields: employeeName, jobTitle, highlights" },
+        { error: "Missing required fields: employeeName, jobTitle, results" },
         { status: 400 }
       );
     }
@@ -40,11 +40,14 @@ Job Title: ${jobTitle}
 Review Period: ${reviewPeriod}
 Requested Tone: ${tone}
 
-Performance Highlights (what they did well):
-${highlights}
+Top 3 Results (what they delivered and the value it drove):
+${results}
 
-Areas for Growth:
-${growth || "None provided — focus primarily on strengths and forward-looking goals."}
+Top 3 Superpowers (strengths and how they used them to drive results):
+${superpowers || "Not provided — infer strengths from their results."}
+
+Top 3 Opportunities to Improve:
+${opportunities || "Not provided — focus primarily on strengths and forward-looking goals."}
 
 Write the full performance review now.`;
 
