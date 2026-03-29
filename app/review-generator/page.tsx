@@ -8,7 +8,6 @@ import { Suspense } from "react";
 type FormData = {
   employeeName: string;
   jobTitle: string;
-  reviewPeriod: string;
   results: string;
   superpowers: string;
   opportunities: string;
@@ -28,7 +27,6 @@ function ReviewGeneratorForm() {
   const [form, setForm] = useState<FormData>({
     employeeName: "",
     jobTitle: "",
-    reviewPeriod: "Annual",
     results: "",
     superpowers: "",
     opportunities: "",
@@ -181,39 +179,20 @@ function ReviewGeneratorForm() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Review period
-              </label>
-              <select
-                value={form.reviewPeriod}
-                onChange={(e) => setForm({ ...form, reviewPeriod: e.target.value })}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 bg-white"
-                disabled={loading}
-              >
-                <option>Q1</option>
-                <option>Q2</option>
-                <option>Q3</option>
-                <option>Q4</option>
-                <option>Annual</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Tone
-              </label>
-              <select
-                value={form.tone}
-                onChange={(e) => setForm({ ...form, tone: e.target.value })}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 bg-white"
-                disabled={loading}
-              >
-                <option>Professional</option>
-                <option>Warm and encouraging</option>
-                <option>Direct and concise</option>
-              </select>
-            </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              Tone
+            </label>
+            <select
+              value={form.tone}
+              onChange={(e) => setForm({ ...form, tone: e.target.value })}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 bg-white"
+              disabled={loading}
+            >
+              <option>Professional</option>
+              <option>Warm and encouraging</option>
+              <option>Direct and concise</option>
+            </select>
           </div>
 
           <div>

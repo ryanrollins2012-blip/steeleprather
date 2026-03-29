@@ -17,7 +17,7 @@ Never use corporate jargon like "synergize", "leverage", or "utilize". Write lik
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { employeeName, jobTitle, reviewPeriod, results, superpowers, opportunities, tone } = body;
+    const { employeeName, jobTitle, results, superpowers, opportunities, tone } = body;
 
     if (!employeeName || !jobTitle || !results) {
       return NextResponse.json(
@@ -37,7 +37,6 @@ export async function POST(req: NextRequest) {
 
 Name: ${employeeName}
 Job Title: ${jobTitle}
-Review Period: ${reviewPeriod}
 Requested Tone: ${tone}
 
 Top 3 Results (what they delivered and the value it drove):
